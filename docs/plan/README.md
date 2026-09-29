@@ -14,6 +14,7 @@ Zasada główna: każdy krok to jeden plik kodu. Do każdego kroku wklejasz Copi
 | `03-prompty-modelu.md` | Teksty promptów wysyłanych do M365 Copilota, schematy JSON, definicje zadań, przykłady |
 | `M1-rozpoznanie.md` … `M7-wykonczenie.md` | Kroki etapów: jeden krok = jeden plik |
 | `99-ryzyka.md` | Ryzyka techniczne i rzeczy poza zakresem |
+| `POSTEP.md` | Lista kontrolna wszystkich kroków do odhaczania, „Gdzie jestem”, odstępstwa od planu |
 
 ## Etapy
 
