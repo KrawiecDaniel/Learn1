@@ -19,6 +19,7 @@ echo "pytanie" | copilot-bridge ask --stdin --schema ./schemas/custom.json
 
 ## Decyzje już podjęte
 
+- **Charakter projektu: PoC do użytku osobistego.** Jeden użytkownik, własne konto M365, dane trafiają wyłącznie do wewnętrznych systemów firmy albo do narzędzi napisanych przez autora. Jeśli PoC się sprawdzi i firma zechce rozwijać rozwiązanie, docelową drogą będzie oficjalne API udostępnione przez IT, a nie Playwright.
 - **Docelowy serwis: Microsoft 365 Copilot** (konto firmowe, logowanie przez Entra ID, czat pod adresem w rodzaju `m365.cloud.microsoft/chat`). Zweryfikuj aktualny URL i wszystkie selektory na żywej stronie.
 - **Tryb pracy: stały daemon.** Jeden długo działający proces trzyma otwartą przeglądarkę z zalogowaną sesją. CLI jest cienkim klientem. Jeśli daemon nie działa, CLI **sam go uruchamia** w tle i dopiero potem wysyła zapytanie.
 
@@ -28,7 +29,7 @@ Zanim zaproponujesz architekturę, wypisz te pytania i podaj rekomendowaną odpo
 - **Czy istnieje oficjalna droga** do M365 Copilota, np. API Microsoft Graph dla Copilota (Chat API / Retrieval API), która zastąpiłaby sterowanie stroną? Sprawdź aktualny status (GA/beta), wymagane licencje i uprawnienia administratora tenanta. Porównaj z Playwrightem pod kątem stabilności, zgodności z polityką firmy i kosztu utrzymania. Jeśli API jest realne, zaprojektuj warstwę `Backend` tak, żeby dało się je później podpiąć zamiast Playwrighta bez zmiany CLI.
 - **Stos technologiczny:** TypeScript/Node czy Python? Uzasadnij wybór (Playwright, walidacja schematu, daemon, dystrybucja CLI).
 - **Kanał komunikacji CLI ↔ daemon:** Unix socket / named pipe (Windows) czy HTTP na `127.0.0.1`? Uwzględnij, na jakich systemach narzędzie ma działać, oraz uwierzytelnienie klienta (np. token w pliku z uprawnieniami tylko dla użytkownika).
-- **Polityka firmy:** czy automatyzacja UI M365 Copilota jest dozwolona przez politykę IT i DLP tenanta? Plan ma to wymienić jako warunek wstępny do potwierdzenia.
+- **Zakres PoC:** co jest minimum potrzebnym do zademonstrowania wartości, a co można świadomie pominąć (np. pula kart, autostart z systemem)? Plan ma być lekki, ale z architekturą, która pozwala później podmienić Playwright na API bez zmiany CLI i kontraktu JSON.
 
 ## Obszary, które plan musi pokryć
 
@@ -116,9 +117,11 @@ Zdefiniuj stałą „kopertę” wyjściową niezależną od schematu modelu:
 - Wykrywanie regresji po zmianie UI Copilota (np. osobna komenda `copilot-bridge doctor`).
 
 ### 10. Bezpieczeństwo i zgodność
-- Ryzyka regulaminowe (ToS) i polityki firmy przy automatyzacji UI M365 oraz rekomendacja, jak je ograniczyć (użytek osobisty, limity częstotliwości, brak omijania zabezpieczeń, Conditional Access i MFA).
+- Zabezpieczenia na poziomie PoC: limit częstotliwości zapytań (np. minimalny odstęp między zapytaniami), brak omijania MFA i Conditional Access (logowanie zawsze ręczne), tylko jeden użytkownik.
+- Profil przeglądarki z sesją traktowany jak hasło: katalog z uprawnieniami tylko dla właściciela, poza repozytorium, łatwy do usunięcia (`copilot-bridge logout` czyści profil).
 - Dane firmowe: odpowiedzi w trybie Work mogą zawierać poufne treści z tenanta. Co trafia do logów, maskowanie treści pytań i odpowiedzi, uprawnienia do katalogu profilu, logów i socketu.
 - Daemon słucha wyłącznie lokalnie i przyjmuje połączenia tylko od bieżącego użytkownika.
+- **Ścieżka do wersji docelowej:** krótka notatka, czego PoC dowiódł i jakie API (np. Copilot w Microsoft Graph albo agent Copilot Studio) trzeba by udostępnić, żeby zastąpić warstwę Playwright.
 
 ### 11. Struktura repozytorium i konfiguracja
 Proponowane drzewo katalogów, plik konfiguracyjny (URL, selektory, timeouty, domyślny schemat), zmienne środowiskowe i sposób instalacji CLI.
