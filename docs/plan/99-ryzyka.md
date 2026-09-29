@@ -22,6 +22,12 @@
 | Instalacja pakietów blokowana przez firmowe proxy | średnie | wysoki | `HTTPS_PROXY` przy `pip`; w ostateczności paczki `.whl` pobrane innym zatwierdzonym kanałem |
 | Długie odpowiedzi przekraczają timeouty klientów (Excel, PAD) | średnie | niski | Zalecane timeouty w przykładach, joby asynchroniczne z odpytywaniem |
 | Daemon ginie razem z terminalem albo przepływem PAD | średnie | średni | `DETACHED_PROCESS` + `CREATE_BREAKAWAY_FROM_JOB`, autostart z Windowsem |
+| Plik Excel otwarty albo współedytowany na SharePoincie blokuje zapis | wysokie | średni | Zapis przez plik tymczasowy, błąd ponawialny, `retry` w kroku; rejestry zapisywane przez przepływy nie powinny być równocześnie edytowane ręcznie |
+| Monity bezpieczeństwa Outlooka przy dostępie przez COM | niskie–średnie | wysoki | Sprawdzenie w M8.0; w razie monitów wariant M8.11w (Outlook w przeglądarce) |
+| Nowy Outlook bez COM | średnie | średni | Wariant M8.11w |
+| Zmiany ekranów ERP psują nagrane skrypty | wysokie | średni | Skrypty jako osobne pliki poprawiane bez restartu; zrzut ekranu przy błędzie; na start tylko odczyt z ERP |
+| AI pisze przepływ z błędem | wysokie | niski | `flow check`, `--dry-run`, zasady w karcie przepływów, szkice zamiast wysyłki |
+| Harmonogram pomija przebiegi przy uśpieniu albo na baterii | średnie | niski | `StartWhenAvailable=true`, wyłączone ograniczenia baterii w XML zadania |
 
 ## Poza zakresem
 
@@ -33,4 +39,5 @@
 - HTTPS na lokalnym porcie.
 - Systemy inne niż Windows.
 - Pojedynczy plik `.exe` (PyInstaller) i instalator MSI.
-- Interfejs graficzny poza prostym playgroundem.
+- Interfejs graficzny poza prostym playgroundem (także edytor przepływów).
+- Wyzwalacze przepływów w czasie rzeczywistym (webhooki, zdarzenia); tylko harmonogram i uruchomienie ręczne.

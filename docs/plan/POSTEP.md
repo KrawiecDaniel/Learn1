@@ -118,6 +118,28 @@ Skopiuj ten plik do katalogu projektu na służbowym laptopie (`C:\dev\copilot-b
 - [ ] M7.10 `README.md`
 - [ ] M7.11 lista końcowa (pytest, doctor, eval, autostart po restarcie, openapi.json)
 
+## M8. Przepływy
+
+- [ ] M8.0 `tools/m8_check.py` + wynik (Outlook COM / web, SharePoint, schtasks, profil Edge)
+- [ ] M8.1 zależności, `FlowsCfg`, nowe ścieżki w `paths.py`
+- [ ] M8.2 `flows/model.py`
+- [ ] M8.3 `flows/template.py` · [ ] test
+- [ ] M8.4 `flows/steps/base.py`
+- [ ] M8.5 `flows/store.py` · [ ] test
+- [ ] M8.6 `flows/runner.py` · [ ] test
+- [ ] M8.7 `steps/control.py`
+- [ ] M8.8 `steps/ai.py`
+- [ ] M8.9 `steps/excel.py` · [ ] test
+- [ ] M8.10 `steps/files.py` · [ ] test
+- [ ] M8.11 `steps/outlook_com.py` (albo M8.11w `outlook_web.py`)
+- [ ] M8.12 `flows/browser_profile.py`
+- [ ] M8.13 `steps/browser.py`
+- [ ] M8.14 `flows/schedule.py` · [ ] test
+- [ ] M8.15 `flows/cli.py`, `flows/__main__.py`, zmiana `cli.py`
+- [ ] M8.16 `flows/card_header.md` + `flow docs`
+- [ ] M8.17 przykłady: [ ] faktury-z-maila · [ ] raport-dzienny · [ ] erp-statusy + `erp_status.py`
+- [ ] M8.18 sprawdzenie końcowe (dry-run, once_per, harmonogram po uśpieniu, przepływ od AI)
+
 ## Dziennik sesji
 
 | Data | Kroki | Uwagi |

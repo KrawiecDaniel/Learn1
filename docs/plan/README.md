@@ -13,6 +13,7 @@ Zasada główna: każdy krok to jeden plik kodu. Do każdego kroku wklejasz Copi
 | `02-kontrakty.md` | Bloki interfejsów `I-…` dla każdego modułu, kody błędów, API, baza danych |
 | `03-prompty-modelu.md` | Teksty promptów wysyłanych do M365 Copilota, schematy JSON, definicje zadań, przykłady |
 | `M1-rozpoznanie.md` … `M7-wykonczenie.md` | Kroki etapów: jeden krok = jeden plik |
+| `M8-przeplywy.md` | Lekkie przepływy YAML (Excel, Outlook, SharePoint, ERP + AI) z własnymi interfejsami |
 | `99-ryzyka.md` | Ryzyka techniczne i rzeczy poza zakresem |
 | `POSTEP.md` | Lista kontrolna wszystkich kroków do odhaczania, „Gdzie jestem”, odstępstwa od planu |
 
@@ -27,6 +28,7 @@ Zasada główna: każdy krok to jeden plik kodu. Do każdego kroku wklejasz Copi
 | M5 Przeglądarka | Prawdziwy backend Playwright + Edge, logowanie, uśpienie | Decyzja z prawdziwego Copilota, daemon przeżywa uśpienie | 4–6 dni |
 | M6 Rozszerzenia | Joby, batch, załączniki, rozmowy, pozostałe zadania, metryki | Testy M6 zielone, batch 50 elementów działa | 3–4 dni |
 | M7 Wykończenie | Playground, doctor, ewaluacja, autostart, przykłady, README | Wszystkie przykłady integracji działają | 3–4 dni |
+| M8 Przepływy | Przepływy YAML z krokami ai, excel, file, outlook, browser; harmonogram | Trzy przykładowe przepływy działają, jeden z harmonogramu | 8–12 dni |
 
 Etap M4 jest przed M5, bo adapter OpenAI ma być gotowy wcześnie. Ryzyko przeglądarki zdejmuje już M1, więc M2–M4 można budować na backendzie `mock` bez obaw.
 
